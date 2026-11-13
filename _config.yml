@@ -1,0 +1,24 @@
+# No baseurl or url here: GitHub Pages fills both in (for a project page,
+# /repo and https://username.github.io), but only when they are unset. Even an
+# empty value stops it, and every stylesheet and link then misses the /repo.
+# Every link in the layouts uses relative_url or absolute_url.
+lang: en
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+permalink: pretty
+timezone: UTC
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore
+  - share
+  - saga-drafts

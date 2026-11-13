@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{%- comment %} The Saga's settings: from its uploaded index.md (the home page, marked saga_kit), or from _data/saga.yml on sites made before that. {% endcomment %}
+{%- assign saga = site.pages | where: "url", "/" | where: "saga_kit", 1 | first | default: site.data.saga -%}
+{%- assign saga_id = saga.saga_id | default: saga.id -%}
+{%- assign asset_prefix = 'assets/' | relative_url -%}
+{%- assign src_from = 'src="assets/' -%}
+{%- assign src_to = 'src="' | append: asset_prefix -%}
+{%- assign href_from = 'href="assets/' -%}
+{%- assign href_to = 'href="' | append: asset_prefix -%}
+<article class="chapter">
+  <p class="back"><a href="{{ '/' | relative_url }}">&larr; Back to {{ saga.title | default: "the Saga" | escape }}</a></p>
+  <header class="article-header">
+    <h1 class="t">{{ page.title | escape }}</h1>
+    {%- if page.date %}
+    <p class="by"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%-d %B %Y" }}</time></p>
+    {%- endif %}
+  </header>
+
+  <div class="prose">
+    {{ content | replace: src_from, src_to | replace: href_from, href_to }}
+  </div>
+
+  <p class="back back-bottom"><a href="{{ '/' | relative_url }}">&larr; Back to {{ saga.title | default: "the Saga" | escape }}</a></p>
+</article>
